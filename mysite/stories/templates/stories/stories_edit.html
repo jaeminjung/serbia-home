@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="col-sm-10 col-sm -offset-3">
+        <h3> Edit story </h3>
+
+        <form method="POST" action="{% url 'stories_edit' p_key=story.pk %}" class="site-form" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{form|crispy}}
+
+            <!--<input type="submit" class="btn btn-success" value="Create" align="right"/>-->
+            <button align="right" type="submit" class="btn btn-success">edit</button>
+        </form>
+
+    </div>
+
+{% endblock %}

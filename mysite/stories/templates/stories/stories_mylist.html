@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+    <div class="row" align="right">
+
+        <div class="col-md-10">
+            {% if user.is_active %}
+            <a href="{% url 'stories_create' %}">
+                <img src="{% static 'add.png' %}"/>  </a>
+            {% endif %}
+        </div>
+
+        <!--<div class="col-md-1">-->
+            <!--<a href="#">-->
+                <!--<img src="{% static 'edit.png' %}"/>  </a>-->
+        <!--</div>-->
+
+        <!--<div clas="col-md-1">-->
+            <!--<a href="#">-->
+              <!--<img src="{% static 'trash.png' %}"/>  </a>-->
+        <!--</div>-->
+
+    </div>
+
+
+    <br>
+
+    <div class="stories">
+
+        {% for story in stories %}
+
+            <div class="story">
+
+                <!--<div class="row">-->
+
+                    <div class="col-md-10">
+                        <p class="text-monospace">
+
+                            {% if story.thumb %}
+                            <img src="{{story.thumb.url}}" class="img-fluid" alt="Responsive image"/>
+                            {%endif%}
+                            <!--<p class="story-author-font"></p>-->
+                            <p class="story-title-font">
+                                <a href="{% url 'stories_detail' p_key=story.pk%}">
+                                    <strong><b>{{story.author}} __ </b></strong>{{story.title}}</a>
+                            </p>
+
+                            <p class="story-body-font">{{story.snippet}}</p>
+                            <p class="story-date-font">{{story.date}}</p>
+                            <p class="story-date-font">Comments: {{story.comment.count}}</p>
+
+                        </p>
+                    </div>
+
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

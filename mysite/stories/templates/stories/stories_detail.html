@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+            <div class="story-detail">
+
+                <div class="row" align="right">
+                    <div class="col-md-9">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'stories_edit' p_key=story.pk %}">
+                            <img src="{% static 'edit.png' %}"/>  </a>
+                        <!--<a href="#">-->
+                          <!--<img src="{% static 'trash.png' %}"/>  </a>-->
+
+                        {% endif %}
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-md-9">
+                        <p class="text-monospace">
+
+                            {% if story.thumb %}
+                            <img src="{{story.thumb.url}}" class="img-fluid" alt="Responsive image"/>
+                            {% endif %}
+                            <p class="story-title-font">
+                                <strong><b>{{story.author}} __ </b></strong>
+                                {{story.title}}</a>
+                            </p>
+                            <p class="story-body-font">{{story.body}}</p>
+                            <p class="story-date-font">{{story.date}}</p>
+
+                        </p>
+                    </div>
+
+                </div>
+
+                <hr>
+
+                {% for comment in story.comment.all %}
+                    <div class="comments">
+                        <p class="story-title-font">
+                            <strong><b>{{comment.author}} __ </b></strong> {{comment.text}}</a>
+                        </p>
+                        <!--<p class="stroy-date-font"> {{comment.date}}</p>-->
+                    </div>
+
+                {% empty %}
+                    <p> no comments yet:(</p>
+                {% endfor %}
+                <a class="btn btn-secondary" href="{% url 'add_comment' p_key=story.pk %}">Add comment</a>
+            </div>
+
+{% endblock %}
