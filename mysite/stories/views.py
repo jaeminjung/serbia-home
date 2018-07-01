@@ -76,7 +76,7 @@ def add_comment(request, p_key):
             comment.story = story
             comment.author = request.user
             comment.save()
-            return redirect('stories_list')
+            return stories_detail(request, p_key=p_key)
     else:
         form = forms.CommentForm()
     return render(request, 'stories/add_comment.html', {'form': form})
