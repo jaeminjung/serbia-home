@@ -37,9 +37,9 @@ class UserRegisterForm(forms.ModelForm):
     name = forms.CharField(max_length=100)
     password = forms.CharField(widget=forms.PasswordInput)
     password2 = forms.CharField(widget=forms.PasswordInput)
-    pythonClass = forms.BooleanField(widget=forms.CheckboxInput)
-    WebDevelop = forms.BooleanField(widget=forms.CheckboxInput)
-    Korea_culture = forms.BooleanField(widget=forms.CheckboxInput)
+    pythonClass = forms.BooleanField(widget=forms.CheckboxInput, required=False)
+    WebDevelop = forms.BooleanField(widget=forms.CheckboxInput, required=False)
+    Korea_culture = forms.BooleanField(widget=forms.CheckboxInput, required=False)
 
     class Meta:
         model = User
