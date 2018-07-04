@@ -10,8 +10,9 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">title</th>
+                <th scope="col">class_date</th>
                 <th scope="col">file</th>
-                <th scope="col">date</th>
+                <th scope="col">uploaded_date</th>
             </tr>
 
         </thead>
@@ -23,8 +24,9 @@
 
                     <th scope="row">{{note.pk}}</th>
                     <td> {{ note.title }} </td>
+                    <td> {{ note.class_date }} </td>
                     <td> <a id="id_uploaded_file" href="{{ note.file.url }}" download>{{note.file}}</a> </td>
-                    <td> {{note.date}} </td>
+                    <td> {{note.uploaded_date}} </td>
 
                 </tr>
             {% endfor %}

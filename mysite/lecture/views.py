@@ -4,7 +4,7 @@ from .models import UploadFileModel
 # Create your views here.
 
 def lecture_notes(request):
-    notes = UploadFileModel.objects.all().order_by('-date')
+    notes = UploadFileModel.objects.all().order_by('-uploaded_date')
     # print(notes[0])
     return render(request, 'lecture/lecture_notes.html', {'notes':notes})
 
